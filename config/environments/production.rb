@@ -85,8 +85,8 @@ Rails.application.configure do
     address:              'smtp.mailgun.org',
     port:                 465,
     domain:               'sandbox1bdc9781f1c140c79a8b2290562f1b13.mailgun.org',
-    user_name:            Rails.application.secrets.email.username,
-    password:             Rails.application.secrets.email.password,
+    user_name:            Rails.application.secrets.email_username,
+    password:             Rails.application.secrets.email_password,
     authentication:       'plain',
     enable_starttls_auto: true,
     ssl: true 
