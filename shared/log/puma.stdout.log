@@ -1,0 +1,16 @@
+=== puma startup: 2018-03-28 16:28:12 +0300 ===
+[4375] * Starting control server on unix:///tmp/puma-status-1522243692346-4352
+[4375] - Worker 0 (pid: 4382) booted, phase: 0
+=== puma startup: 2018-03-28 17:00:31 +0300 ===
+[4373] * Starting control server on unix:///tmp/puma-status-1522245631036-4350
+[4373] - Worker 0 (pid: 4380) booted, phase: 0
+=== puma startup: 2018-05-08 11:26:49 +0300 ===
+[32285] * Starting control server on unix:///tmp/puma-status-1525768009161-32279
+[32285] - Worker 0 (pid: 32292) booted, phase: 0
+=== puma startup: 2018-05-08 11:46:52 +0300 ===
+[32382] * Starting control server on unix:///tmp/puma-status-1525769212211-32382
+[32382] - Worker 0 (pid: 32389) booted, phase: 0
+[32382] - Gracefully shutting down workers...
+[32382] === puma shutdown: 2018-05-08 11:47:35 +0300 ===
+[32382] - Goodbye!
+Exiting

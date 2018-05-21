@@ -1,0 +1,335 @@
+<div class="topbar animated fadeInLeftBig"></div>
+
+<!-- Header Starts -->
+<div class="navbar-wrapper">
+      <div class="container">
+
+        <div class="navbar navbar-inverse navbar-fixed-top" role="navigation" id="top-nav">
+          <div class="container">
+            <div class="navbar-header">
+              <!-- Logo Starts -->
+              <a class="navbar-brand" href="#home"><img src="<%= @logo %>" alt="logo"></a>
+              <!-- #Logo Ends -->
+
+
+              <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+
+            </div>
+
+
+            <!-- Nav Starts -->
+            <div class="navbar-collapse  collapse">
+              <ul class="nav navbar-nav navbar-right scroll">
+                 <li class=""><a href="#home"><%= @menus[0] %></a></li>
+                 <li><a href="#youtube"><%= @menus[1] %></a></li>
+                 <li><a href="#menu"><%= @menus[2] %></a></li>
+                 <li><a href="#foods"><%= @menus[3] %></a></li>
+                 <li><a href="#partners"><%= @menus[4] %></a></li>
+                 <li><a href="#contact"><%= @menus[5] %></a></li>
+                 <li><a href="#contact"><%= @menus[6].html_safe %></a></li>
+              </ul>
+            </div>
+            <!-- #Nav Ends -->
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+<!-- #Header Starts -->
+
+
+
+
+<div id="home">
+<!-- Slider Starts -->
+  <div class="banner">
+            <img src="<%= @slider %>" alt="banner" class="img-responsive">
+            <div class="caption">
+              <div class="caption-wrapper">
+                <div class="caption-info">              
+                <%= @slogan_ico %>
+                <h1 class="animated bounceInUp"><%= @slogan_head %></h1>
+                <p class="animated bounceInLeft"><%= @slogan_text %></p>
+               <a href="#menu" class="explore animated bounceInDown"><i class="fa fa-angle-down  fa-3x"></i></a>
+                </div>
+              </div>
+            </div>
+  </div>
+<!-- #Slider Ends -->
+</div>
+
+<!-- team -->
+<p>&nbsp</p>
+<h2 style="padding: 0; margin: 0;visibility: visible; animation-name: fadeInUp;" class="text-center wowload fadeInUp animated"><%=@team_title%></h2>
+<p style="visibility: visible; animation-name: fadeInLeft;" class="text-center  wowload fadeInLeft animated"><%=@team_manifest%></p>
+<div style="visibility: visible; animation-name: fadeInUpBig;" class="row grid team  wowload fadeInUpBig animated"> 
+  <% Team.all.each do |team| %>
+  <div class="col-sm-3 col-xs-6">
+  <figure class="effect-chico">
+        <img src="<%= team.image.url if team.image_stored?%>" alt="img01" class="img-responsive">
+        <figcaption>
+            <h2 style="visibility: visible; animation-name: fadeInUp;" class="text-center wowload fadeInUp animated"><%= team.title %></h2>
+            <p><%= team.description %></p>            
+        </figcaption>
+  </figure>
+  </div>
+  <% end %>
+</div>
+<!-- team -->
+
+<!-- YouTube -->
+<style>
+  #youtube {
+    margin-top: 20px;
+    padding: 20px 0 40px 0;
+    background-color: white;
+  }
+  .fa-youtube-square {
+    color: #E62117;
+    text-transform: uppercase;
+  }
+</style>
+<div id="youtube" class="row">
+  <div class="col-md-2 col-xs-2"></div>
+  <div class="col-md-8 col-xs-8">
+    <h2 style="visibility: visible; animation-name: fadeInUp;" class="text-center wowload fadeInUp animated"><%= @youtube_title.html_safe %></h2>  
+    <div class="row">
+      <div style="visibility: visible; animation-name: fadeInLeft;" class="col-sm-6 wowload fadeInLeft animated">
+        <h4><i class="fa fa-youtube-square"></i> <%= @youtube_head1 %> </h4>
+        <%= @youtube_code.html_safe %>
+      </div>
+      <div style="visibility: visible; animation-name: fadeInRight;" class="col-sm-6 wowload fadeInRight animated">
+        <h4><i class="fa fa-bars"></i><%=@youtube_head2 %></h4>
+        <%= @youtube_description.html_safe %>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-2 col-xs-2"></div>
+</div>
+<!-- // YouTube -->
+
+<!-- Cirlce Starts -->
+<div id="menu" class="container spacer about">
+<h2 style="visibility: visible; animation-name: fadeInUp;" class="text-center wowload fadeInUp animated"><%= @about_title %></h2>  
+  <div class="row">
+  <div style="visibility: visible; animation-name: fadeInLeft;" class="col-sm-6 wowload fadeInLeft animated">
+    <h4><i class="fa fa-bookmark"></i> <%= @about_us %> </h4>
+    <%= @about_text %>
+    
+
+  </div>
+  <div style="visibility: visible; animation-name: fadeInRight;" class="col-sm-6 wowload fadeInRight animated">
+    
+     <h4><i class="fa fa-money"></i><%= @service_name %></h4>
+
+      <!-- menus -->
+      <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+  <% Service.all.each.with_index do |service,i| %>
+  <div class="panel panel-default">
+    <div class="panel-heading" role="tab">
+      <h4 class="panel-title">
+        <a data-toggle="collapse" data-parent="#accordion" href="#collapse<%= i %>" aria-expanded="true" aria-controls="collapse<%= i %>">
+         <%= service.url.html_safe %><%= service.title.html_safe %>
+        </a>
+      </h4>
+    </div>
+    <div id="collapse<%= i %>" class="panel-collapse collapse" role="tabpanel">
+      <div class="panel-body">
+        <% service.description.each_line do |temp| %>
+        <% name, price = temp.split(';') %>
+        <div class="clearfix food-list"><div class="pull-left"><%= name %></div><span class="pull-right"><%= price %> <i class="fa fa-rub" aria-hidden="true"></i>
+</span></div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+  <% end %>
+</div>
+      <!-- menus -->
+
+
+
+  </div>
+  </div>
+
+  
+</div>
+<!-- #Cirlce Ends -->
+
+
+<!-- works -->
+<div id="foods" class=" clearfix grid">
+    <h2 style="padding: 0; margin: 0; visibility: visible; animation-name: fadeInUp;" class="text-center  wowload fadeInUp animated">Строительство</h2>
+    <p>Строительство под ключ. Возведение силового каркаса</p>
+    <% Portfolio.all.each do |portfolio| %>
+    <figure style="visibility: visible; animation-name: fadeInUp;" class="effect-oscar  wowload fadeInUp animated">
+        <img src="<%= portfolio.image.url %>" alt="img01">
+        <figcaption>
+            <h2><%= portfolio.title %></h2>
+            <p><%= portfolio.description.html_safe %><br>
+            <a href="<%= portfolio.image.url %>" title="Исходный размер" data-gallery="">Просмотреть</a></p>
+        </figcaption>
+    </figure>
+    <% end %>
+</div>
+<!-- works -->
+
+<style type="text/css">
+  h2 {
+    text-align: center !important;
+  }
+  #partners {
+    padding-top: 2.2em; 
+    padding-bottom: 4.2em;
+    background-color: white;
+  }
+  #partners h3, #contact h3 {
+    margin: 0;
+    padding: 0;
+  }
+  #partners img {
+    border-radius: 3px;
+  }
+  #partners ul {
+    display: inline-block;
+    text-align: left;
+  }
+  #partners li {
+    list-style: none;
+  }
+  #partners li:before {
+    content: "\f138\00a0\00a0";
+    font-family: FontAwesome;
+    font-style: normal;
+    font-weight: normal;
+    color: #F9B82A;
+  }
+  #partners .materials {
+    border: 1px solid gray;
+    padding: 10px;
+  }
+</style>
+<div id="partners" class="text-center  wowload fadeInUp animated animated row">
+    <div class="col-md-12">
+    <h2 style="padding: 0; margin: 0;visibility: visible; animation-name: fadeInUp;" class="text-center  wowload fadeInUp animated"><%=@clients_title%></h2>
+    <p>ПАРИТЕТСК предлагает дополнительные услуги которые могут стать Вам интересными</p>
+    <div class="row materials">
+    <% count = 0; Client.all.each.with_index do |service,i| %>
+    <%= count>=4? (count=0;'<div class="clearfix"></div></div><div class="row">'.html_safe) : (count+=1;'') %>
+      <div class="col-sm-4 col-md-4">
+        <div class="row">
+          <div class="col-sm-6 col-md-6">
+            <%= image_tag service.image.url, alt: service.title, class: 'img-responsive' %>
+          </div>
+          <div class="col-sm-6 col-md-6">
+            <h3 ><%= service.title %></h3>
+            <%= service.description.html_safe %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+    </div>
+    </div>
+</div>
+
+
+  <div id="contact" class="spacer">
+    <div class="container contactform center">
+      <style type="text/css">
+          table td {
+             line-height: 1.5;
+             vertical-align: top;
+          }
+      </style>
+      <table class="text-center wowload fadeInUp animated" border="0" width="100%" style="margin: -50px 0 20px 0;font-size: 24px">
+        <tr>
+          <td colspan="2">
+            <h2 style="padding: 0; margin: 0;visibility: visible; animation-name: fadeInUp;" class="text-center wowload fadeInUp animated"><%=@write_us%></h2>
+          </td>
+        </tr>
+        <tr><td colspan="2">&nbsp</td></tr>
+        <tr>
+          <td align="right" width="37%"><i class="fa fa-envelope" aria-hidden="true"> </td>
+          <td align="left"> &nbsp&nbsp<%= @contents[12].description.html_safe%></td>
+        </tr>
+        <tr>
+          <td align="right" width="37%"></td>
+          <td align="left"> &nbsp&nbsp<%= @contents[12].slave.html_safe%></td>
+        </tr>
+      </table>
+      <div class="row wowload fadeInLeftBig animated" style="visibility: visible; animation-name: fadeInLeftBig;">
+        <div class="col-sm-6 col-sm-offset-3 col-xs-12">
+          <%= form_tag '/emails', method: :post, remote: true,authenticity_token: false, class: 'contact-form' do %>
+            <input type="text" name="email[name]" placeholder="Как к Вам обращаться">
+            <input type="text" name="email[contact]" placeholder="Ваш контакт">
+            <textarea name="email[message]" placeholder="Обращение" rows="5"></textarea>
+            <%= button_to @send_us, remote: true, class: "btn btn-primary contact-form", authenticity_token: false do %>
+              <i class="fa fa-paper-plane"></i>
+              <%=@send_us%>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+<!-- Trigger the modal with a button -->
+<a href='#' id='show_modal' class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal" style="display: none">Open Modal</a>
+<%=@map%>
+
+<!-- Footer Starts -->
+<div class="footer text-center spacer">
+<p class="wowload flipInX animated" style="visibility: visible; animation-name: flipInX;">
+
+<% @social.each_line do |social| %>
+<% ico,url = social.split(';') %>
+<a href="<%=url%>">
+<i class="fa fa-<%=ico%> fa-2x"></i>
+</a>
+<% end %>
+
+</p>
+<div style="position: absolute">
+<%=@footer%>
+</div>
+<%= @copyright %>
+</div>
+
+<a class="gototop " href="#home">
+<i class="fa fa-angle-up fa-3x"></i>
+</a>
+<div id="blueimp-gallery" class="blueimp-gallery blueimp-gallery-controls">
+<div class="slides"></div>
+<h3 class="title">Title</h3>
+<a class="prev">‹</a>
+<a class="next">›</a>
+<a class="close">×</a>
+</div>
+
+<!-- Modal -->
+<div id="myModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title"><%=@modal_head%></h4>
+      </div>
+      <div class="modal-body">
+        <p><%=@modal_body%></p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Закрыть</button>
+      </div>
+    </div>
+
+  </div>
+</div>

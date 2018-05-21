@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta name="description" content="Строительство в Липецке Строительство под ключ, каркасные дома, дом из бруса, бани, дачи, коттедж. Пиломатериалы
+Доска обрезная, доска необрезная, брус, рейка, вагонка. Владимирский лес Официальный сайт - страница Пиломатериал от производителя, Владимирский лес | Липецк | Центральное Черноземье | Воронеж | Тамбов | доска обрезная, брус, рейка 
+доска необрезная, изготавливаем по размерам заказчика ">
+        <title><%= @title %></title>
+        <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+        <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+        <%= csrf_meta_tags %>
+        <!-- favicon -->
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+        <link rel="shortcut icon" href="<%= @ico %>" type="image/x-icon">
+        <link rel="icon" href="<%= @ico %>" type="image/x-icon">
+    </head>
+    <style type="text/css">
+    body {
+      overflow-x: hidden;
+    }
+    </style>
+
+<body style="background:url('<%= @background %>') right no-repeat fixed #fff">
+
+<%= yield %>
+</body>
+</html>
